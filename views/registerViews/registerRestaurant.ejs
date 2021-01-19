@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/flatly/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/99095233a7.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">ADMINISTRATOR</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/admin">Home
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/adminaddrest">Dodaj restoran
+                    <!--<span class="sr-only">(current)</span>-->
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/adminrest">Dodaj administratora restorana</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/managefood">Menadžer tipova</a>
+            </li>
+
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Pregled usluga</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/managerrest">Restorani</a>
+                    <a class="dropdown-item" href="#">Ponude</a>
+                    <a class="dropdown-item" href="#">Narudzbe</a>
+                    <div class="dropdown-divider"></div>
+
+                </div>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">LogOut</button>
+        </form>
+    </div>
+</nav>
+
+
+
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+        <div class="card card-body">
+            <h3 class="text-center mb-3">
+                <i class="fas fa-user-plus"></i> Registrujte administratora restorana
+            </h3>
+
+
+            <ul>
+                <%if(typeof errors != 'undefined') {%>
+                <%errors.forEach(error =>{ %>
+                <li><%=error.message%></li>
+                <%})%>
+
+                <%}%>
+            </ul>
+
+            <form action="/adminrest" method="POST">
+                <div class="form-group">
+                    <label for="name">Ime</label>
+                    <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            class="form-control"
+                            placeholder="Unesi ime"
+                            value="<%= typeof name != 'undefined' ? name : '' %>"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="name">Prezime</label>
+                    <input
+                            type="text"
+                            id="last_name"
+                            name="last_name"
+                            class="form-control"
+                            placeholder="Unesi ime"
+                            value="<%= typeof name != 'undefined' ? name : '' %>"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="email">Email adresa</label>
+                    <input
+                            type="text"
+                            id="email"
+                            name="email"
+                            class="form-control"
+                            placeholder="Unesi Email"
+                            value="<%= typeof email != 'undefined' ? email : '' %>"
+                    />
+
+                </div>
+                <div class="form-group">
+                    <label for="password">Lozinka</label>
+                    <input
+                            type="text"
+                            id="password"
+                            name="password"
+                            class="form-control"
+                            placeholder="Vaša lozinka"
+                            value="<%= typeof password != 'undefined' ? password : '' %>"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="password2">Potvrdite lozinku</label>
+                    <input
+                            type="text"
+                            id="password2"
+                            name="password2"
+                            class="form-control"
+                            placeholder="Potvrdite lozinku"
+                            value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
+                    />
+                    <input type="hidden" name="userName" value="Administrator restorana">
+                    <input type="hidden" name="type" value="1">
+                </div>
+                <div class="form-group">
+                    <label for="exampleSelect2">Izaberite restoran</label>
+                    <select name="restaurantId" multiple="" class="form-control" id="exampleSelect2">
+                        <%for (let i=0;i<rest.length;i++){%>
+                            <option value="<%=rest[i].restaurant_id%>"><%=rest[i].restaurant_name%></option>
+                        <%}%>
+
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">
+                    Registruj se
+                </button>
+            </form>
+            <p class="lead mt-4">Imate li račun? <a href="/users/login">Ulogujte se</a></p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

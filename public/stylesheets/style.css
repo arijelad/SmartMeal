@@ -1,0 +1,28 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+i {
+  color: #4d4d4d;
+}
+
+.cardx{
+  padding-top: 150px;
+}
+.card{
+  padding-top: 20px;
+}
+
+.img-circle {
+  width: 100px;
+  height: auto;
+  border-radius: 50%;
+}
+#ex1Slider .slider-selection {
+  background: #BABABA;
+}
+
