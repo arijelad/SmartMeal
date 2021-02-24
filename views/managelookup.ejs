@@ -13,7 +13,7 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">ADMINISTRATOR</a>
+    <a class="navbar-brand" >ADMINISTRATOR</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -42,16 +42,14 @@
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Pregled usluga</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="/managerrest">Restorani</a>
-                    <a class="dropdown-item" href="#">Ponude</a>
-                    <a class="dropdown-item" href="#">Narudzbe</a>
+                    <a class="dropdown-item" href="/manageponude">Ponude</a>
+                    <a class="dropdown-item" href="/managenarudzbe">Narudzbe</a>
                     <div class="dropdown-divider"></div>
 
                 </div>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">LogOut</button>
-        </form>
+        <a href="/"><button class="btn btn-danger my-2 my-sm-0" type="button">LogOut</button></a>
     </div>
 </nav>
 
@@ -78,12 +76,15 @@
                             <input class="form-control form-control-sm" name="anothervalue" id="anothervalue" type="text" placeholder="Nova izmjena" >
                             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                                 <div class="btn-group mr-2" role="group" aria-label="First group">
-                                    <button type="submit" class="btn btn-success" onclick="updateType">Izmijeni</button>
-                                    <button type="button" class="btn btn-danger" onclick="deleteType(<%=i+1%>)">Izbrisi</button>
-
+                                    <button type="submit" class="btn btn-success" onclick="updateType()">Izmijeni</button>
 
                                 </div>
                             </div>
+
+                        </form>
+                        <form action="/managefood/<%=foodtypes[i].food_id%>">
+                            <button type="button" class="btn btn-danger" onclick="deleteType(<%=foodtypes[i].food_id%>)">Izbrisi</button>
+
 
                         </form>
 
@@ -133,13 +134,13 @@
                     <td id="answer"><%=foodcategory[i].category_name%></td>
                     <td>
                         <form method="POST" action="/managefood" id="myFormCat">
-                            <input type="hidden" name="cid" value="<%=foodcategory[i].category_name%>">
+
                             <input type="hidden" name="idD" value="<%=foodcategory[i].category_id%>">
                             <input class="form-control form-control-sm" name="anothervalue" id="anothervalue" type="text" placeholder="Nova izmjena" >
                             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                                 <div class="btn-group mr-2" role="group" aria-label="First group">
-                                    <button type="submit" class="btn btn-success" onclick="updateType">Izmijeni</button>
-                                    <button type="button" class="btn btn-danger" onclick="deleteType(<%=i+1%>)">Izbrisi</button>
+                                    <button type="submit" class="btn btn-success" onclick="updateType()">Izmijeni</button>
+                                    <button type="button" class="btn btn-danger" onclick="deleteType(<%=foodcategory[i].category_id%>)">Izbrisi</button>
 
 
                                 </div>
@@ -193,19 +194,19 @@
                     <td id="answer"><%=restauranttype[i].name%></td>
                     <td>
                         <form method="POST" action="/managefood" id="myFormCat">
-                            <input type="hidden" name="cid" value="<%=restauranttype[i].name%>">
                             <input type="hidden" name="idD" value="<%=restauranttype[i].restaurant_type_id%>">
                             <input class="form-control form-control-sm" name="anothervalue" id="anothervalue" type="text" placeholder="Nova izmjena" >
                             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                                 <div class="btn-group mr-2" role="group" aria-label="First group">
                                     <button type="submit" class="btn btn-success" onclick="updateType">Izmijeni</button>
-                                    <button type="button" class="btn btn-danger" onclick="deleteType(<%=i+1%>)">Izbrisi</button>
+
 
 
                                 </div>
                             </div>
 
                         </form>
+
 
 
 

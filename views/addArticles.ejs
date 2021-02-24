@@ -35,20 +35,11 @@
             </li>
 
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Pregled usluga</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Restorani</a>
-                    <a class="dropdown-item" href="#">Ponude</a>
-                    <a class="dropdown-item" href="#">Narudzbe</a>
-                    <div class="dropdown-divider"></div>
-
-                </div>
+            <li class="nav-item">
+                <a class="nav-link" href="/addDistance">Razdaljina dostave</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">LogOut</button>
-        </form>
+        <a href="/"><button class="btn btn-danger my-2 my-sm-0" type="button">LogOut</button></a>
     </div>
 </nav>
 <br>
@@ -70,7 +61,7 @@
             <td id="answer"><%=articles[i].name%></td>
             <td id="answer"><%=articles[i].price%></td>
 
-            <td id="answer"><div class="col-md-3 col-lg-3 " align="left"> <img alt="User Pic" src="http://localhost:1000/images/upoloadedimages/<%=articles[0].picture%>" class="img-circle img-responsive"></div></td>
+            <td id="answer"><div class="col-md-3 col-lg-3 " align="left"> <img alt="User Pic" src="http://localhost:1000/images/upoloadedimages/<%=articles[i].picture%>" class="img-circle img-responsive"></div></td>
 
 
         </tr>
@@ -83,7 +74,7 @@
 
 
 
-<form action="/administrationarticles" method="post">
+<form action="/administrationArticles" method="post">
 
         <div class="form-group">
             <label for="exampleInputEmail1">Naziv artikla: </label>
@@ -109,7 +100,6 @@
     <button type="submit" class="btn btn-secondary" onclick="insertArticle()">Zavrsi unos artikla:</button>
 </form>
 
-<button type="button" class="btn btn-primary" onclick="getSaleForm()">Unesite akciju</button>
 
 
 

@@ -214,12 +214,12 @@ router.post('/register',
     function(req, res, next) {
       res.sendStatus(200);
 });
-
+/*
 router.post('/deliverer',
     fun.registerUser,
     function(req, res, next) {
       res.sendStatus(200);
-    });
+    });*/
 router.post('/customer',
     fun.registerCustomer,
     function(req, res, next) {
@@ -228,7 +228,7 @@ router.post('/customer',
 
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', {
-    successRedirect: '/admin',
+    successRedirect: '/adminaddrest',
     failureRedirect: '/users/login',
     failureFlash: true
   })(req, res, next);
@@ -242,9 +242,9 @@ router.post('/login/adminrestaurant', (req, res, next) => {
 });
 router.post('/login/deliverer', (req, res, next) => {
   passport.authenticate('local', {
-    successRedirect: '/admin',
+    successRedirect: '/deliverer',
     failureRedirect: '/users/login/deliverer',
-    session:false
+    failureFlash: true
   })(req, res, next);
 });
 router.post('/login/customer', (req, res, next) => {

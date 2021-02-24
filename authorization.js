@@ -18,7 +18,7 @@ module.exports = {
             return next();
         }
         req.flash('error', "Nije moguce pristupiti ukoliko niste dostavljac");
-        res.redirect('/');
+        res.redirect('/users/login/deliverer');
     },
     customer: (req, res, next)=>{
         if(req.isAuthenticated() && req.user.id_type === 6) {

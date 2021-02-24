@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/flatly/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/99095233a7.js" crossorigin="anonymous"></script>
+    <script
+            src="https://code.jquery.com/jquery-3.5.1.min.js"
+            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand">ADMINISTRATOR</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/admin">Home
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/adminaddrest">Dodaj restoran
+                    <!--<span class="sr-only">(current)</span>-->
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/adminrest">Dodaj administratora restorana</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/managefood">Menadžer tipova</a>
+            </li>
+
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false">Pregled usluga</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/managerrest">Restorani</a>
+                    <a class="dropdown-item" href="/manageponude">Ponude</a>
+                    <a class="dropdown-item" href="/managenarudzbe">Narudzbe</a>
+                    <div class="dropdown-divider"></div>
+
+                </div>
+            </li>
+        </ul>
+        <a href="/"><button class="btn btn-danger my-2 my-sm-0" type="button">LogOut</button></a>
+    </div>
+</nav>
+
+
+
+
+
+<div class="container cardx">
+
+    <div class="row">
+        <div class="col-sm">
+            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="getTypes()">Izlistaj sve narudzbe</button>
+
+            <table class="table table-hover" id="tabletypes" style="display: none">
+                <thead>
+                <tr>
+                    <th scope="col">Naziv hrane</th>
+                    <th scope="col">Način plaćanja</th>
+                    <th scope="col">Cijena</th>
+                    <th scope="col">Ime kupca</th>
+                    <th scope="col">Prezime kupca</th>
+                    <th scope="col">Vrijeme dostave</th>
+                    <th scope="col">Da li je isporučena?</th>
+                </tr>
+                </thead>
+                <tbody>
+                <%for(let i =0;i<restaurants.length;i++){%>
+                <tr class="table-primary">
+                    <td id="answer"><%=restaurants[i].food%></td>
+                    <td id="answer"><%=restaurants[i].payement%></td>
+                    <td id="answer"><%=restaurants[i].price%></td>
+                    <td id="answer"><%=restaurants[i].name%></td>
+                    <td id="answer"><%=restaurants[i].last%></td>
+                    <td id="answer"><%=restaurants[i].time%></td>
+                    <td id="answer"><%=restaurants[i].delivery_status%></td>
+
+                </tr>
+
+                <%}%>
+
+                </tbody>
+            </table>
+        </div>
+        <script>
+            var counter = 0;
+            function getTypes(){
+                counter++;
+                if(counter%2==0){
+                    $('#tabletypes').hide('slow');
+                }else{
+                    $('#tabletypes').show('slow');
+                }
+
+            };
+        </script>
+
+
+
+
+
+</body>
