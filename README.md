@@ -12,4 +12,9 @@ Administrators can manage the system, restaurant owners can manage their menus a
 -- Delivery Driver
 -- Customer
 
+#### Technologies Used
+-- Node.js
+-- Express.js
+-- PostgreSQL
+
 [LiveDemo] https://drive.google.com/file/d/1AZ8CZaMXIY-U3IROUcRBzlNAWHyEYQ8T/view?usp=sharing
